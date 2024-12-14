@@ -12,8 +12,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    credentials: true,
+    origin: function (origin, callback) {
+      callback(null, true); // Accept all origins
+    },
+    credentials: true, // Allow cookies and credentials
   })
 );
 
